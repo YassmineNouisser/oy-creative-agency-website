@@ -12,6 +12,7 @@ interface ButtonProps {
   onClick?: () => void;
   className?: string;
   external?: boolean;
+  disabled?: boolean;
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
@@ -34,6 +35,7 @@ export default function Button({
   onClick,
   className = '',
   external = false,
+  disabled = false,
 }: ButtonProps) {
   const baseStyles =
     'inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-oy-icon/50 focus:ring-offset-2 focus:ring-offset-[var(--oy-ring-offset)]';
@@ -53,7 +55,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} className={classes}>
+    <button onClick={onClick} className={classes} disabled={disabled}>
       {children}
     </button>
   );
